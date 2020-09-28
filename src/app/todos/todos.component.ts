@@ -7,10 +7,16 @@ import { trigger, transition, animate, style } from '@angular/animations';
   styleUrls: ['./todos.component.css'],
   animations: [
     trigger('fade', [
+
       transition('void => *', [
         style({ opacity: 0 }),
-        animate(2000)
-      ])
+        animate(2000, style({opacity: 0}))
+      ]),
+
+      transition('* => void', [
+        animate(2000, style({opacity: 0}))
+      ]),
+
     ])
   ]
 })
@@ -26,7 +32,11 @@ export class TodosComponent {
   }
 
   removeItem(item) {
+    console.log(item);
     let index = this.items.indexOf(item);
+    console.log(this.items);
+    console.log(index);
     this.items.splice(index, 1);
+    console.log(this.items);
   }
 }
