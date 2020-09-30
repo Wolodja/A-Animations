@@ -1,12 +1,25 @@
-import { slide } from './../animations';
+import { bounceOutLeftAnimation } from './../animations';
 import { Component } from '@angular/core';
+import { trigger, transition, animate, style, state, keyframes, useAnimation } from '@angular/animations';
 
 
 @Component({
   selector: 'todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
-  animations: [slide]
+  animations: [
+    trigger('todoAnimation', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate(2000)
+      ]),
+      transition(':leave', [
+        style({backgroundColor: 'red'}),
+        animate(500),
+        useAnimation(bounceOutLeftAnimation)
+      ])
+    ])
+  ]
 })
 export class TodosComponent {
   items: any[] = [
