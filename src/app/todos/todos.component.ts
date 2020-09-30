@@ -1,6 +1,6 @@
 import { bounceOutLeftAnimation, fadeInAnimation } from './../animations';
 import { Component } from '@angular/core';
-import { trigger, transition, animate, style, state, query, useAnimation, animateChild } from '@angular/animations';
+import { trigger, transition, animate, style, group, query, useAnimation, animateChild } from '@angular/animations';
 
 
 @Component({
@@ -11,11 +11,13 @@ import { trigger, transition, animate, style, state, query, useAnimation, animat
 
     trigger('todosAnimation', [
       transition(':enter', [
-        query('h1', [
-          style({ transform: 'translateY(-20px)' }),
-          animate(1000)
-        ]),
-        query('@todoAnimation', animateChild())
+        group([
+          query('h1', [
+            style({ transform: 'translateY(-20px)' }),
+            animate(1000)
+          ]),
+          query('@todoAnimation', animateChild())
+        ])
       ])
 
     ]),
