@@ -1,4 +1,4 @@
-import { fade } from './../animations';
+import { slide } from './../animations';
 import { Component } from '@angular/core';
 
 
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   selector: 'todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
-  animations: [fade]
+  animations: [slide]
 })
 export class TodosComponent {
   items: any[] = [
@@ -20,11 +20,7 @@ export class TodosComponent {
   }
 
   removeItem(item) {
-    console.log(item);
     let index = this.items.indexOf(item);
-    console.log(this.items);
-    console.log(index);
     this.items.splice(index, 1);
-    console.log(this.items);
   }
 }
