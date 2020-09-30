@@ -17,7 +17,7 @@ export let slide = trigger('slide', [
     ]),
 
     transition(':leave', [
-        animate(300, style({transform: 'translateX(-100%)'}))
+        animate('0.3s ease-in', style({transform: 'translateX(-100%)'}))
     ])
 
 ]);
