@@ -14,11 +14,10 @@ import { trigger, transition, animate, style, state, keyframes, useAnimation } f
           params: {
             duration: '500ms'
           }
-        }
-        )
+        })
       ]),
       transition(':leave', [
-        style({backgroundColor: 'red'}),
+        style({ backgroundColor: 'red' }),
         animate(500),
         useAnimation(bounceOutLeftAnimation)
       ])
@@ -40,5 +39,13 @@ export class TodosComponent {
     let index = this.items.indexOf(item);
     this.items.splice(index, 1);
     console.log(this.items);
+  }
+
+  animationStarted($event) {
+    console.log($event);
+  }
+
+  animationDone($event) {
+    console.log($event);
   }
 }
