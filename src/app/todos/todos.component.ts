@@ -1,6 +1,6 @@
 import { bounceOutLeftAnimation, fadeInAnimation } from './../animations';
 import { Component } from '@angular/core';
-import { trigger, transition, animate, style, state, keyframes, useAnimation } from '@angular/animations';
+import { trigger, transition, animate, style, state, query, useAnimation } from '@angular/animations';
 
 
 @Component({
@@ -8,6 +8,17 @@ import { trigger, transition, animate, style, state, keyframes, useAnimation } f
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
   animations: [
+
+    trigger('todosAnimation', [
+      transition(':enter', [
+        query('h1', [
+          style({ transform: 'translateY(-20px)'}),
+          animate(1000)
+        ])
+      ])
+
+    ]),
+
     trigger('todoAnimation', [
       transition(':enter', [
         useAnimation(fadeInAnimation, {
